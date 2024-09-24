@@ -1,10 +1,9 @@
+import { Injectable } from "@nestjs/common";
 import { MessagesRepository } from "../repositories/messages.repository";
 
+@Injectable()
 export class MessagesService {
-    messageRepository: MessagesRepository;
-    constructor() {
-        //MARK: Burada dependency injection yapılmadı, bu proje syntax'i görmek için
-        this.messageRepository = new MessagesRepository();
+    constructor(public messageRepository: MessagesRepository) {
     }
 
     async findOne(id:string) {
